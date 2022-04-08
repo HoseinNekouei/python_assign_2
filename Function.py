@@ -95,8 +95,8 @@ while True:
                     
                     if check_day_result[0]==True:
                         str_day=check_day_result[1]
-                        print("The date entered is approved!")
-                        print(str_year+"/"+str_month+"/"+str_day)
+                        date_message = "The date {}/{}/{} is approved"
+                        print(date_message.format(str_year,str_month,str_day))
                     else:
                         print("Try again!")
                 else:
