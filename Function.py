@@ -23,25 +23,21 @@ def check_year(str_year):
         print(error_message)
 ###
 while True:
-    command = input("\n Enter a command (start 'or' end)...")
-    if command == "start":       
-        date= input("\nPleae Enter a new date like yyyy-mm-dd ... ")
+    date= input("\nPleae Enter a new date like yyyy-mm-dd ... ")
 
-        #pattern validation control
-        if check_count(date,"-",1,10,2)== True:    
-            if check_count(date,"-",4,5,1)==True and check_count(date,"-",6,8,1) == True:
+    #pattern validation control
+    if check_count(date,"-",1,10,2)== True:    
+        if check_count(date,"-",4,5,1)==True and check_count(date,"-",6,8,1) == True:
 
-                str_year,str_month,str_day = date.split("-")
-                check_year = check_year(str_year)
-                #check_month = check_month(str_month)
-                #check_day = check_day(str_day)
+            str_year,str_month,str_day = date.split("-")
+            check_year = check_year(str_year)
+            #check_month = check_month(str_month)
+            #check_day = check_day(str_day)
 
-                if check_year == True:
-                    if check_month(str_month)== True:
-                        if check_day(str_day)==True:
-                            print("The date entered is approved!")
-                        else:
-                            print("Try again!")
+            if check_year == True:
+                if check_month(str_month)== True:
+                    if check_day(str_day)==True:
+                        print("The date entered is approved!")
                     else:
                         print("Try again!")
                 else:
@@ -50,10 +46,6 @@ while True:
                 print("Try again!")
         else:
             print("Try again!")
-            continue
-        
-    elif command == "end":
-        print("The application was closed!")
-        break
     else:
-        print("\nCommand not found!")
+        print("Try again!")
+        continue
