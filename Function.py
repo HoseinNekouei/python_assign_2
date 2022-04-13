@@ -37,10 +37,10 @@ def is_leap(str_year,str_month):
 #This Function Ckeck the len and validity of month
 def check_month(str_month):
     len_month= len(str_month)
-    int_month=int(str_month)
 
     if len_month <=2:
         if str_month.isdigit()==True:
+            int_month=int(str_month)
             if int_month>0 and int_month<=12:
                 if len_month == 1:
                     str_month= "0"+str_month
@@ -48,25 +48,26 @@ def check_month(str_month):
             else:
                 error_message="The month number is incorrect. it shuld be between 1 to 12. "            
                 print(error_message)
-                return False,str_month
+                return False
         else:
             error_message = "The value entered is not a number for the year section. "
             print(error_message)
-            return False,str_month
+            return False
     else:
         error_message="The length of month can not grater that 2 character. "
         print(error_message)
-        return False,str_month
+        return False
 
 # This Function Check the validity of day
 def check_day(str_day,str_month,leap_param):
     len_day=len(str_day)
-    int_day= int(str_day)
     int_month=int(str_month)
 
     if len_day<=2:
         if str_day.isdigit()==True:
+            int_day= int(str_day)
             x=dayInMonth[int_month-1]
+    
             if len_day==1:
                 str_day="0"+str_day
 
