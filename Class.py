@@ -17,8 +17,7 @@ class Date:
         if self.month==12:
             day = self.day+ other
             if day<=29:
-                addDay = self.day + other
-                return other
+                return self.year,self.month, day
             else:
                 x_diff_day= other % 29
                 y_diff_month = self.month + (other / 29)
@@ -60,8 +59,13 @@ class Date:
 
 inputDate=input("Enter a date like yyyy-mm/dd ...")
 strYear,strMonth,strDay=inputDate.split("-")
+intYear= int(strYear)
+intMonth=int(strMonth)
+intDay=int(strDay)
 
 addDate = input("Enter the number of days you want to add to the date... ")
+addDate = int(addDate)
 
-add=AddDate(strYear, strMonth, strDay)
-add.__add__(addDate)
+add=Date(intYear, intMonth, intDay)
+newDate = add.__add__(addDate)
+print("New Date is: ", newDate[0],'/',newDate[1],'/',newDate[2])
