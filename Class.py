@@ -58,9 +58,9 @@ class Date:
 
 
 inputDate=input("Enter a date like yyyy-mm/dd ...")
+strYear,strMonth,strDay=inputDate.split("-")
 
 if strYear.isdigit() and strMonth.isdigit() and strDay.isdigit():    
-    strYear,strMonth,strDay=inputDate.split("-")
     intYear= int(strYear)
     intMonth=int(strMonth)
     intDay=int(strDay)
