@@ -58,14 +58,19 @@ class Date:
 
 
 inputDate=input("Enter a date like yyyy-mm/dd ...")
-strYear,strMonth,strDay=inputDate.split("-")
-intYear= int(strYear)
-intMonth=int(strMonth)
-intDay=int(strDay)
 
-addDate = input("Enter the number of days you want to add to the date... ")
-addDate = int(addDate)
+if strYear.isdigit() and strMonth.isdigit() and strDay.isdigit():    
+    strYear,strMonth,strDay=inputDate.split("-")
+    intYear= int(strYear)
+    intMonth=int(strMonth)
+    intDay=int(strDay)
 
-add=Date(intYear, intMonth, intDay)
-newDate = add.__add__(addDate)
-print("New Date is: ", newDate[0],'/',newDate[1],'/',newDate[2])
+    addDate = input("Enter the number of days you want to add to the date... ")
+    addDate = int(addDate)
+
+    addition=Date(intYear, intMonth, intDay)
+    newDate = addition.__add__(addDate)
+    print("New Date is: ", newDate[0],'/',newDate[1],'/',newDate[2])
+else:
+    print("Date should be number!")
+    exit()
