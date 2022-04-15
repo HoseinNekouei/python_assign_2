@@ -19,11 +19,11 @@ class Date:
             if day<=29:
                 return self.year,self.month, day
             else:
-                x_diff_day= other % 29
-                y_diff_month = self.month + (other / 29)
+                x_diff_day= day % 29
+                y_diff_month = self.month + (day // 29)
                 if y_diff_month > 12:
-                    y_diff_month = y_diff_month % 12
-                    z_diff_year = self.year +( y_diff_month / 12)
+                    z_diff_year = self.year +( y_diff_month // 12)
+                    y_diff_month %= 12
                     return z_diff_year,y_diff_month,x_diff_day
                 else:
                     return self.year,y_diff_month,x_diff_day
@@ -31,13 +31,13 @@ class Date:
         elif self.month >6 and self.month < 12:
             day = self.day+ other
             if day<=30:
-                addDay = self.day + other
+                return self.year,self.month, day
             else:
-                x_diff_day= other % 30
-                y_diff_month = self.month + (other / 30)
+                x_diff_day= day % 30
+                y_diff_month = self.month + (day // 30)
                 if y_diff_month > 12:
-                    y_diff_month = y_diff_month % 12
-                    z_diff_year = self.year +( y_diff_month / 12)
+                    z_diff_year = self.year +( y_diff_month // 12)
+                    y_diff_month %= 12
                     return z_diff_year,y_diff_month,x_diff_day
                 else:
                     return self.year,y_diff_month,x_diff_day
@@ -45,13 +45,13 @@ class Date:
         elif self.month >0 and self.month<= 6:                            
             day = self.day+ other
             if day<=31:
-                addDay = self.day + other
+                return self.year,self.month, day
             else:
-                x_diff_day= other % 31
-                y_diff_month = self.month + (other / 31)
+                x_diff_day= day % 31
+                y_diff_month = self.month + (day // 31)
                 if y_diff_month > 12:
-                    y_diff_month = y_diff_month % 12
-                    z_diff_year = self.year +( y_diff_month / 12)
+                    z_diff_year = self.year +( y_diff_month // 12)
+                    y_diff_month %= 12
                     return z_diff_year,y_diff_month,x_diff_day
                 else:
                     return self.year,y_diff_month,x_diff_day
