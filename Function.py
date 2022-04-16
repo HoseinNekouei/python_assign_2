@@ -81,7 +81,7 @@ def check_day(str_day,str_month,leap_param):
             elif leap_param==True and int_month==12:
                 if int_day <= 30:
                     return str_day,str_month, True
-            elif leap_param == true and int_month < 12:
+            elif leap_param == True and int_month < 12:
                 x=dayInMonth[int_month-1]
                 if int_day <=x:
                     return str_day,str_month, True
