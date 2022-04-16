@@ -7,10 +7,6 @@ class Date:
         self.month=month
         self.day=day
 
-    def __str__(self,other):
-        # Return a String representation of self    
-        return str(self.year), '/', str(self.month), '/', str(other)
-
     def __add__(self,other):
         #  Return a new date representing the addition    
         assert type(other)==int,"Number of Days that you want to add should be number!"       
@@ -56,21 +52,21 @@ class Date:
                 else:
                     return self.year,y_diff_month,x_diff_day
 
+while True:
+    inputDate=input("\nEnter a date like yyyy-mm/dd ...")
+    strYear,strMonth,strDay=inputDate.split("-")
 
-inputDate=input("Enter a date like yyyy-mm/dd ...")
-strYear,strMonth,strDay=inputDate.split("-")
+    if strYear.isdigit() and strMonth.isdigit() and strDay.isdigit():    
+        intYear= int(strYear)
+        intMonth=int(strMonth)
+        intDay=int(strDay)
 
-if strYear.isdigit() and strMonth.isdigit() and strDay.isdigit():    
-    intYear= int(strYear)
-    intMonth=int(strMonth)
-    intDay=int(strDay)
+        addDay = input("Enter the number of days you want to add to the date...")
+        addDay = int(addDay)
 
-    addDate = input("Enter the number of days you want to add to the date... ")
-    addDate = int(addDate)
-
-    addition=Date(intYear, intMonth, intDay)
-    newDate = addition.__add__(addDate)
-    print("New Date is: ", newDate[0],'/',newDate[1],'/',newDate[2])
-else:
-    print("Date should be number!")
-    exit()
+        addition=Date(intYear, intMonth, intDay)
+        newDate = addition.__add__(addDay)
+        print("New Date is: ", newDate[0],'/',newDate[1],'/',newDate[2],end="\n")
+    else:
+        print("Date should be number!")
+        exit()
