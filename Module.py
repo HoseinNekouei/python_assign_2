@@ -25,12 +25,17 @@ class My_Date_Module():
                 message = "your date + {} --> < {}/{}/{}"
                 print(message.format(self.add_item,self.year,self.month,x_diff_day))
 
-# class En_Date(My_Date_Module):
+class En_Date(My_Date_Module):
     
-#     def __init__(self,year,month,day,other):
-#         super().__init__(year,month,day)
-#         self.hosein= other
-        
+    def __init__(self,year,month,day):
+        super().__init__(year,month,day,add_item)
+        self.month = month
+
+    def validity_date(self):
+        dayInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
+        days_legaly = dayInMonth[self.month-1]
+        return days_legaly
+
 
 class Fa_Date(My_Date_Module):
     def __init__(self,year,month,day):
@@ -39,7 +44,6 @@ class Fa_Date(My_Date_Module):
 
     def validity_date(self):
         dayInMonth = [31,31,31,31,31,31,30,30,30,30,30,29]
-        # global days_legaly 
         days_legaly = dayInMonth[self.month-1]
         return days_legaly
     
