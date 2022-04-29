@@ -1,54 +1,51 @@
-from ast import Return
-from typing_extensions import Self
-
-
 class My_Date_Module():
-
-    def __init__(self,year,month,day):
-        assert type(year)==int and type(month)==int and type(day)==int, "Date should be number!" 
+    
+    def __init__(self,year,month,day,add_item):
+        assert type(year)==int and type(month)==int and type(day)==int and type(add_item) == int , "Date should be number!" 
         self.year=year
         self.month= month
         self.day=day
+        self.add_item = add_item
 
     
-    def __add__(self,other,day_valid):
-        assert type(other) == int ,"Should  be number!"
-        day=self.day + other
-        if day<= day_valid:
-            return self.year , self.month , self.day
+    def __add__(self,days_legaly):
+        day = self.day + self.add_item
+        if day<= days_legaly:
+                message = "your date + {} --> < {}/{}/{}"
+                print(message.format(self.add_item,self.year,self.month,day))
         else:
-            x_diff_day = day % day_valid
-            self.month += day // day_valid
+            x_diff_day = day % days_legaly
+            self.month += day // days_legaly
             if self.month > 12:
                 self.year += self.month // 12
-                self.month = self.month % 12
-                return self.year, self.month, x_diff_day
+                self.month = self.month % 12 
+                message = "your date + {} --> < {}/{}/{} >"
+                print(message.format(self.add_item,self.year,self.month,x_diff_day))
             else:
-                return self.year,self.month,x_diff_day
+                message = "your date + {} --> < {}/{}/{}"
+                print(message.format(self.add_item,self.year,self.month,x_diff_day))
 
-
-class En_Date(My_Date_Module):
+# class En_Date(My_Date_Module):
     
-    def __init__(self,year,month,day,other):
-        super().__init__(year,month,day)
-        self.hosein= other
+#     def __init__(self,year,month,day,other):
+#         super().__init__(year,month,day)
+#         self.hosein= other
         
 
 class Fa_Date(My_Date_Module):
+    def __init__(self,year,month,day):
+        super().__init__(year,month,day,add_item)
+        self.month = month
 
-    def __init__(self,add_item):
-        self.add_item=add_item
-
-    dayInMonth = [31,31,31,31,31,31,30,30,30,30,30,29]
-    global days_legaly 
-    days_legaly = dayInMonth[super().month-1]
+    def validity_date(self):
+        dayInMonth = [31,31,31,31,31,31,30,30,30,30,30,29]
+        # global days_legaly 
+        days_legaly = dayInMonth[self.month-1]
+        return days_legaly
     
 
-
-
-
 input_fa_date = input("Enter a Persian Date like yyyy-mm-dd...")
-input_add= input("Enter a numbers the you want to increase your date...")
+add_item = int(input("Enter a numbers the you want to increase your date..."))
 
 # Get a date and split it
 str_year,str_month,str_day = input_fa_date.split("-")
@@ -57,10 +54,7 @@ str_year,str_month,str_day = input_fa_date.split("-")
 int_year= int(str_year)
 int_month= int(str_month)        
 int_day=int(str_day)
-add_item = int(input_add)
 
-init_object = My_Date_Module()
-init_object.__init__(int_year,int_month,int_day)
-validity_object = Fa_Date()
-validity_object.__init__(add_item)
-
+add_object = My_Date_Module(int_year,int_month,int_day,add_item)
+validity_object = Fa_Date(int_year,int_month,int_day)
+add_object.__add__(validity_object.validity_date())
