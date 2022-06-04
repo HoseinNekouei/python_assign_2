@@ -1,3 +1,6 @@
+from cProfile import label
+
+
 class My_Date_Module():
     
     def __init__(self,year,month,day,add_item):
@@ -25,6 +28,7 @@ class My_Date_Module():
                 message = "your date + {} --> < {}/{}/{}"
                 print(message.format(self.add_item,self.year,self.month,x_diff_day))
 
+
 class En_Date(My_Date_Module):
     
     def __init__(self,year,month,day):
@@ -38,7 +42,7 @@ class En_Date(My_Date_Module):
 
 
 class Fa_Date(My_Date_Module):
-    def __init__(self,year,month,day):
+    def __init__(self,year,month,day,add_item):
         super().__init__(year,month,day,add_item)
         self.month = month
 
@@ -59,6 +63,5 @@ int_year= int(str_year)
 int_month= int(str_month)        
 int_day=int(str_day)
 
-add_object = My_Date_Module(int_year,int_month,int_day,add_item)
-validity_object = Fa_Date(int_year,int_month,int_day)
-add_object.__add__(validity_object.validity_date())
+validity_object = Fa_Date(int_year,int_month,int_day,add_item)
+validity_object.__add__(validity_object.validity_date())
