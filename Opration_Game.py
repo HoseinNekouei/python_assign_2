@@ -18,7 +18,7 @@ for item in range(5):
     
     myList = [F'{player_1}:{player1_score}', F'\n{player_2}:{player2_score}'] # create a list to prepare for saving in the file
 
-    # find winner
+    # find winner and update the player scores
     if GAMEROUND % 2==0 and MATCHSTICKS % 2 == 0:
         print(F'{player_2} is WIN!')
         player2_score += 1
