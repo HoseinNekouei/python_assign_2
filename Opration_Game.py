@@ -1,3 +1,5 @@
+#Create by Hosein Nekouei
+
 MATCHSTICKS = 15 # Number of total mitch sticks in the game.    
 GAMEROUND = 1 # number of times the game has played.
 player1_score =0
