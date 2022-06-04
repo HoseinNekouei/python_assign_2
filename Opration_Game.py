@@ -1,7 +1,4 @@
 
-from email import message
-
-
 MATCHSTICKS = 15 # Number of total mitch sticks in the game.    
 GAMEROUND = 0 # number of times the game has played.
 player_1 = input('The FIRST player,tell me your name...')
