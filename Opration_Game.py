@@ -9,6 +9,8 @@ player_1 = input('The FIRST player,tell me your name...')
 player_2 = input('The SECOND player,tell me your name...')
 
 for item in range(5):   
+    
+    print(F"Round: {GAMEROUND}") # Counter of Round
     while MATCHSTICKS >= 5:
         if GAMEROUND % 2 == 0: player_name = player_2
         else : player_name = player_1 
@@ -21,24 +23,37 @@ for item in range(5):
     myList = [F'{player_1}:{player1_score}', F'\n{player_2}:{player2_score}'] # create a list to prepare for saving in the file
 
     # find winner and update the player scores
-    if GAMEROUND % 2==0 and MATCHSTICKS % 2 == 0:
-        print(F'{player_2} is WIN!')
-        player2_score += 1
-        myList[1]=F'\n{player_2}:{player2_score}'
+    if MATCHSTICKS % 2 == 0:
+        #winner
+        if GAMEROUND % 2==0:
+            print(F'{player_2} WON!')
+            player2_score += 1
+            myList[1]=F'\n{player_2}:{player2_score}'
+        else:
+            print(F'{player_1} WON!')
+            player1_score += 1        
+            myList[0]=F'{player_1}:{player1_score}'
     else:
-        print(F'{player_1} is WIN!')
-        player1_score += 1        
-        myList[0]=F'{player_1}:{player1_score}'
+        #loser
+        if GAMEROUND % 2 !=0:
+            print(F'{player_2} WON!')
+            player2_score += 1
+            myList[1]=F'\n{player_2}:{player2_score}'
+        else:
+            print(F'{player_1} WON!')
+            player1_score += 1        
+            myList[0]=F'{player_1}:{player1_score}'
+            
 
     # Write the players score in a file
-    with open('c:\\development\\workspace\\python\\git\\python_assign_2\\gamescore.txt','w') as scoreWrite:
+    with open('e:\\workspace\\python\\git\\python_assign_2\\gamescore.txt','w') as scoreWrite:
         scoreWrite.writelines(myList)
         
     MATCHSTICKS = 15 # Reset repository for a new round
     GAMEROUND = 1 # reset game round
     print('Try again for a new round ...') if item < 4 else print('Game Over!')
     
-with open('c:\\development\\workspace\\python\\git\\python_assign_2\\gamescore.txt','r') as scoreRead:
+with open('e:\\workspace\\python\\git\\python_assign_2\\gamescore.txt','r') as scoreRead:
     playerScoreFile = scoreRead.readlines()
     for item in playerScoreFile:
         print(item)
