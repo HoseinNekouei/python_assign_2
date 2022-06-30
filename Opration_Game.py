@@ -20,7 +20,7 @@ for item in range(5):
         MATCHSTICKS -= num
         GAMEROUND += 1
     
-    myList = [F'{player_1}:{player1_score}', F'\n{player_2}:{player2_score}'] # create a list to prepare for saving in the file
+    myList = [f'{player_1}:{player1_score}', f'\n{player_2}:{player2_score}'] # create a list to prepare for saving in the file
 
     # find winner and update the player scores
     if MATCHSTICKS % 2 == 0:
