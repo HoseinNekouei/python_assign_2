@@ -1,3 +1,2 @@
-
-hosein:1
-atena:4
+hos: 0 
+re:1

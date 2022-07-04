@@ -30,7 +30,7 @@ class player():
                 NUM = int(input(f'Choose Between 1 to 4 (Turn You: {player_name} / NOM: {self.matchsticks}): ')) 
                 self.matchsticks -= NUM
                 self.gameround += 1
-            else:
+            else:    
                 print('Game Over!')
                 self.score_calc(player_name) 
 
@@ -40,13 +40,14 @@ class player():
             player_name = self.find_player_name(self.gameround) # whoever has a turn wins!
             print(F'{player_name} WON!')
             self.player_score_2 += 1
-            myList[1]=f'\n{self.player2}:{self.player_score_2}'
+            myList[1]=f'{self.player2}: {self.player_score_2}\n'
         else:
             print(F'{player_name} WON!') # The Last Player to win!
             self.player_score_1 += 1
-            myList[0]=f'\n{self.player1}:{self.player_score_1}'
+            myList[0]=f'{self.player1}: {self.player_score_1}\n'
         
         self.matchsticks = 15 # Reset reposotory of matchstiks
+        self.gameround = 1 # Reset counter of gmae for start new game 
         self.save_score(myList) # Call the save_score method to save the player score for each level  
 
     # The method that stores players' points                  
@@ -58,7 +59,7 @@ class player():
 player_1 = input('Tell me your name... <First Player> ') # Get the name of first player
 player_2 = input('Tell me your name... <Second Player> ') # Get the name of second player
 
-myList = [f'{player_1}: 0', f'\n{player_2}: 0'] # create a list to prepare for saving in the file
+myList = [f'{player_1}: 0 \n', f'\n{player_2}: 0 \n'] # create a list to prepare for saving in the file
 PLAYER_SCORE_1=PLAYER_SCORE_2 = 0 # Set the initial value for the two player
 MATCHSTICKS = 15 # Set the number of total mitch sticks in the game.    
 GAMEROUND = 1 # The first init
